@@ -102,11 +102,11 @@ if (config.build.bundleAnalyzerReport) {
 
 module.exports = webpackConfig
 
-var pages = utils.getEntries('./src/module/**/*.html')
+var pages = utils.getEntries('./src/module/**/index.html')
 for(var page in pages) {
   // 配置生成的html文件，定义路径等
   var conf = {
-  filename: page + '/index.html',
+  filename: page === 'home' ? 'index.html' : page + '/index.html',
   template: pages[page], //模板路径
   inject: true,
   // excludeChunks 允许跳过某些chunks, 而chunks告诉插件要引用entry里面的哪几个入口
